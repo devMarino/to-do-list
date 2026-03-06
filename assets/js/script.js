@@ -4,11 +4,16 @@ const addTarefa = document.querySelector('#addTarefa')
 const campoTarefa = document.querySelector('#campoTarefa')
 const listaTarefa = document.querySelector(".listaTarefa") 
 // após o click do botão cria a tarefa
+
+
+// cria tarefa
 addTarefa.addEventListener('click', (evento) =>{
+    // pega valor da tarefa
+    const textoTarefa = campoTarefa.value.trim()
+    // evento: evita recarregamento depois de salvar 
     evento.preventDefault()
-    if (campoTarefa.value != ''){
-        tarefas.push({text: campoTarefa.value, concluido: false})
-        alert("tarefa criada com sucesso!")
+    if (campoTarefa.value !== ''){
+        tarefas.push({text: textoTarefa, concluido: false})
         campoTarefa.value = ''
         mostrarTarefas()
     } else {
@@ -19,18 +24,17 @@ addTarefa.addEventListener('click', (evento) =>{
 function mostrarTarefas(){
    listaTarefa.innerHTML = ''
    tarefas.forEach(
-    (tarefa, index => {
+    (tarefa, index) => {
     const li = document.createElement('li');
     li.classList.toggle('completo', tarefa.concluido)
     li.innerHTML = `<span>${tarefa.text}</span>
-    <input type = "checkbox" ${tarefas.concluido ? 'checked' : ''}
+    <input type = "checkbox" ${tarefa.concluido ? 'checked' : ''}
     onClick = "tarefaConcluida(${index})">
     <button class = "editar" onclick="editarTarefa(${index})">Editar</button>
     <button class = "remover" onclick="removerTarefa(${index})"></button>
     `
-    listaTarefa.append(li)
+    listaTarefa.appendChild(li)
    })
-)
 };
 
 function removerTarefa(index){
@@ -53,6 +57,6 @@ function editarTarefa(index){
 
 function tarefaConcluida(index){
     // concluido vem falso, se for diferente disso acaba sendo um valor true
-    tarefas[index].concluido !== tarefa[index].concluido
+    tarefas[index].concluido = !tarefa[index].concluido
     mostrarTarefas()
 }
