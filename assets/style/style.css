@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh2;
+    background-color: rgb(255, 255, 255);
+}
+
+header {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    margin-top: 5em;
+    background-color: rgba(255, 196, 3, 0.534);
+    border: 2o25px solid #ff7606;
+    
+}
+
+h1 {
+    color: coral;
+    font-size: 3.1em;
+}
